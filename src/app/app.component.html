@@ -1,3 +1,18 @@
 <GridLayout>
-  <Label text="Hello World! :)"></Label>
+  <ListView
+    [items]="BASE64_PDFS"
+    (itemTap)="onItemTap($event)"
+    (itemLoading)="onItemLoading($event)"
+    (loaded)="onLoaded()"
+  >
+    <ng-template let-item="item" let-i="index" >
+      <GridLayout [height]="HEIGHT">
+        <PdfView
+          [src]="item"
+          [height]="HEIGHT"
+          (load)="onLoad(i)"
+        ></PdfView>
+      </GridLayout>
+    </ng-template>
+  </ListView>
 </GridLayout>
